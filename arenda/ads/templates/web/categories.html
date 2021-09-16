@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-md-2">
+<div class="accordion" id="accordionPanelsStayOpenExample">
+{% for cat in categories %}
+  <div class="accordion-item border-0">
+    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+      <button class="accordion-button bg-transparent" style="color: #1d1d1d;" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne{{ cat.id }}" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+        {{ cat.name }}
+      </button>
+    </h2>
+    <div id="panelsStayOpen-collapseOne{{ cat.id }}" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+      <div class="accordion-body">
+        <ul class="navbar-nav">
+
+            {% for c in cat.child_category.all %}
+            <li><a href="{{ c.get_absolute_url }}">{{ c.name }}</a></li>
+            {% endfor %}
+
+        </ul>
+      </div>
+    </div>
+  </div>
+{% endfor %}
+</div>
+</div>
+
+
+{% endblock content %}

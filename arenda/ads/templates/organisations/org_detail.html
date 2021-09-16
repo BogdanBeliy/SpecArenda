@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+{{ org_detail.name }}
+{% for ad in org_detail.org_ads.all %}
+
+    {{ ad.title }}
+
+{% endfor %}
+
+{% endblock content %}
